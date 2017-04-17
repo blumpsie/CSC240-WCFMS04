@@ -112,7 +112,23 @@ namespace CSC240_WCFMS04
 
         public bool editAnObject(T aT)
         {
-            return false;
+            string paramClass = aT.GetType().Name;
+            T currT;
+
+            for (int i = 0; i < theList.Count; i++)
+            {
+                currT = theList[i];
+                if (currT.GetType().Name.Equals(paramClass))
+                {
+                    if (currT.GetType().Name.Equals(aT.GetType().Name))
+                    {
+                        theList[i] = aT;
+                        return true; // success
+                    }
+                }
+            }
+
+            return false; // not found in set
         }
 
         public bool removeAnObject(T aT)
