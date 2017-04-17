@@ -133,7 +133,36 @@ namespace CSC240_WCFMS04
 
         public bool removeAnObject(T aT)
         {
-            return false;
+            string paramClass = aT.GetType().Name;
+            T currT;
+            T lastItem;
+
+            for (int i = 0; i < theList.Count; i++)
+            {
+                currT = theList[i];
+                if (currT.GetType().Name.Equals(paramClass))
+                {
+                    if (currT.GetType().Name.Equals(aT.GetType().Name))
+                    {
+
+                        theList.RemoveAt(i);
+
+                        if (currentIndex == theList.Count - 1)
+                        {
+                            currentIndex = 0;
+                        }
+
+                        else if (isEmpty())
+                        {
+                            currentIndex = -1;
+                        }
+
+                        return true; // success
+                    }
+                }
+            }
+
+            return false; // not found in set
         }
     }
 }
