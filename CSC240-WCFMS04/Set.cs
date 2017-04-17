@@ -32,12 +32,12 @@ namespace CSC240_WCFMS04
         // Test to see if parameter is a member of the set
         public bool isMemberOf(T aT)
         {
-            string paramClass = aT.GetType().ToString(); // Hopefully this works
+            string paramClass = aT.GetType().Name; // Hopefully this works
             String currClass;
 
             foreach (T currT in theList)
             {
-                currClass = currT.GetType().ToString();
+                currClass = currT.GetType().Name;
 
                 if (currClass.Equals(paramClass))
                 {
@@ -80,7 +80,7 @@ namespace CSC240_WCFMS04
             }
 
             theList.Add(aT);
-
+            
             if (theList.Count == 1) currentIndex = 0;
 
             // Successful
@@ -108,6 +108,16 @@ namespace CSC240_WCFMS04
                     Console.WriteLine("\n");
                 }
             }
+        }
+
+        public bool editAnObject(T aT)
+        {
+            return false;
+        }
+
+        public bool removeAnObject(T aT)
+        {
+            return false;
         }
     }
 }

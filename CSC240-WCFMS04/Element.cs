@@ -8,13 +8,7 @@ namespace CSC240_WCFMS04
     {
         public string getClassName()
         {
-            string resultStr;
-            int beginAt;
-
-            resultStr = this.ToString();
-            beginAt = resultStr.IndexOf('.');
-
-            return resultStr.Substring(beginAt + 1);
+            return GetType().Name;
         }
 
         public abstract void readIn();
@@ -23,6 +17,6 @@ namespace CSC240_WCFMS04
 
         public abstract Element clone();
 
-        public abstract string toString();
+        public abstract override string ToString();
     }
 }

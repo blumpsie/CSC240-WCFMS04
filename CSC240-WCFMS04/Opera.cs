@@ -54,11 +54,10 @@ namespace CSC240_WCFMS04
         // Displays the data for the Opera
         public override void display()
         {
-            Console.WriteLine("\nComposer: {0}", this.composer);
-            Console.WriteLine("Date Performed: {0}", this.performanceDate);
+            Console.WriteLine(this.ToString());
         }
 
-        public override bool equals(Element obj)
+        public bool equals(Object obj)
         {
             return this.title.Equals(((Opera)obj).Title);
         }
@@ -71,6 +70,11 @@ namespace CSC240_WCFMS04
             theClone.Composer = this.composer;
             theClone.PerformanceDate = this.performanceDate;
             return theClone;
+        }
+
+        public override string ToString()
+        {
+            return "Composer: " + Composer + "\nDate Performed: " + PerformanceDate;
         }
     }
 }

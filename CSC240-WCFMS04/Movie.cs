@@ -1,5 +1,6 @@
 ﻿using System;
 
+
 namespace CSC240_WCFMS04
 {
     class Movie : Element
@@ -75,7 +76,7 @@ namespace CSC240_WCFMS04
         {
             string[] tokens = this.starList.Split(';');
             
-            Console.WriteLine("\nYear Realeased: {0}", this.year);
+            Console.WriteLine(this.ToString());
             Console.WriteLine("Actors that starred in this movie:");
             foreach (string star in tokens)
             {
@@ -100,7 +101,7 @@ namespace CSC240_WCFMS04
             return found;
         }
 
-        public override bool equals(Element obj)
+        public bool equals(Object obj)
         {
             return this.title.Equals(((Movie)obj).Title);
         }
@@ -113,6 +114,11 @@ namespace CSC240_WCFMS04
             theClone.Year = this.year;
             theClone.StarList = this.starList;
             return theClone;
+        }
+
+        public override string ToString()
+        {
+            return "\nYear Realeased: " + Year;
         }
     }
 }

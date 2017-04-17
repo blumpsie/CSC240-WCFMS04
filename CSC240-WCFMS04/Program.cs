@@ -6,11 +6,8 @@ namespace CSC240_WCFMS04
     {
         static void Main(string[] args)
         {
-            ElementSet theList = new ElementSet();
-            /*
-            Movie movie = new Movie();
-            Console.WriteLine(movie.ToString());
-            */
+            Set<Element> theSet = new Set<Element>();
+            
             // present the menu for user to choose from
             // and process their choice
             bool terminate = false;
@@ -58,11 +55,11 @@ namespace CSC240_WCFMS04
 
                         if (choice[0] == 'M')
                         {
-                            addMovie(theList);
+                            addMovie(theSet);
                         }
                         else if (choice[0] == 'O')
                         {
-                            addOpera(theList);
+                            addOpera(theSet);
                         }
                         else
                         {
@@ -70,20 +67,20 @@ namespace CSC240_WCFMS04
                         }
                         break;
                     case '2':
-                        displayMovieTitles(theList);
+                        displayMovieTitles(theSet);
                         break;
                     case '3':
-                        displayOperaTitles(theList);
+                        displayOperaTitles(theSet);
                         break;
                     case '4':
                         Console.WriteLine("\nWhat Movie would you like to see information for?");
                         string title = Console.ReadLine().ToUpper();
-                        displayMovie(theList, title);
+                        displayMovie(theSet, title);
                         break;
                     case '5':
                         Console.WriteLine("\nWhat Opera would you like to see information for?");
                         title = Console.ReadLine().ToUpper();
-                        displayOpera(theList, title);
+                        displayOpera(theSet, title);
                         break;
                     case '6':
                         Console.WriteLine("\nWhich would you like to edit (Movie/Opera)?");
@@ -93,7 +90,7 @@ namespace CSC240_WCFMS04
                         {
                             Element movie = new Movie(); // create new Movie object
                             movie.readIn();              // get the new information
-                            bool result = theList.editAnObject(movie); // the object and place store the result
+                            bool result = theSet.editAnObject(movie); // the object and place store the result
 
                             if(!result)
                             {
@@ -108,7 +105,7 @@ namespace CSC240_WCFMS04
                         {
                             Element opera = new Opera(); // create new Opera object
                             opera.readIn();              // get the new information
-                            bool result = theList.editAnObject(opera); // the object and place store the result
+                            bool result = theSet.editAnObject(opera); // the object and place store the result
 
                             if (!result)
                             {
@@ -133,7 +130,7 @@ namespace CSC240_WCFMS04
                             Movie movie = new Movie();                        // create new Movie object
                             Console.WriteLine("\nWhat is the title of the Movie that you would like to remove?");
                             movie.Title = Console.ReadLine().ToUpper();               // get the new information
-                            bool result = theList.removeAnObject(movie);    // the object and place store the result
+                            bool result = theSet.removeAnObject(movie);    // the object and place store the result
 
                             if (!result)
                             {
@@ -149,7 +146,7 @@ namespace CSC240_WCFMS04
                             Opera opera = new Opera(); // create new Opera object
                             Console.WriteLine("\nWhat is the title of the Opera that you would like to remove?");
                             opera.Title = Console.ReadLine().ToUpper();               // get the new information
-                            bool result = theList.removeAnObject(opera); // the object and place store the result
+                            bool result = theSet.removeAnObject(opera); // the object and place store the result
 
                             if (!result)
                             {
@@ -181,7 +178,7 @@ namespace CSC240_WCFMS04
         }
         
         // Display's the title of all the movies
-        public static void displayMovieTitles(ElementSet anElementSet)
+        public static void displayMovieTitles(Set<Element> anElementSet)
         {
             Element currObject;
             Movie movie;
@@ -201,7 +198,7 @@ namespace CSC240_WCFMS04
         }
 
         // Display's the title of all the operas
-        public static void displayOperaTitles(ElementSet anElementSet)
+        public static void displayOperaTitles(Set<Element> anElementSet)
         {
             Element currObject;
             Opera opera;
@@ -220,7 +217,7 @@ namespace CSC240_WCFMS04
         }
 
         // Display's the information for a specified movie
-        public static void displayMovie(ElementSet anElementSet, string title)
+        public static void displayMovie(Set<Element> anElementSet, string title)
         {
             bool found = false;
 
@@ -249,7 +246,7 @@ namespace CSC240_WCFMS04
         }
 
         // Display's the information for a specified opera
-        public static void displayOpera(ElementSet anElementSet, string title)
+        public static void displayOpera(Set<Element> anElementSet, string title)
         {
             bool found = false;
 
@@ -278,18 +275,14 @@ namespace CSC240_WCFMS04
         }
 
         // adds a Movie to the set
-        public static void addMovie(ElementSet anElementSet)
+        public static void addMovie(Set<Element> anElementSet)
         {
             Element movie = new Movie();
             movie.readIn();
-            int result = anElementSet.add(movie);
+            bool result = anElementSet.add(movie);
 
             // feedback on the result of the add
-            if (result == 0)
-            {
-                Console.WriteLine("\nThe set is full.");
-            }
-            else if (result == -1)
+            if (!result)
             {
                 Console.WriteLine("\nThat Movie is already in the set.");
             }
@@ -300,18 +293,14 @@ namespace CSC240_WCFMS04
         }
 
         // adds an Opera to the set
-        public static void addOpera(ElementSet anElementSet)
+        public static void addOpera(Set<Element> anElementSet)
         {
             Element opera = new Opera();
             opera.readIn();
-            int result = anElementSet.add(opera);
+            bool result = anElementSet.add(opera);
 
             // feedback on the result of the add
-            if (result == 0)
-            {
-                Console.WriteLine("\nThe set is full.");
-            }
-            else if (result == -1)
+            if (!result)
             {
                 Console.WriteLine("\nThat Opera is already in the set.");
             }
