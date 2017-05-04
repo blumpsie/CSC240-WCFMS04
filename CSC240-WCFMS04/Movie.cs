@@ -101,7 +101,7 @@ namespace CSC240_WCFMS04
             return found;
         }
 
-        public bool equals(Object obj)
+        public override bool Equals(Object obj)
         {
             return this.title.Equals(((Movie)obj).Title);
         }

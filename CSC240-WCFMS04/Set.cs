@@ -120,7 +120,7 @@ namespace CSC240_WCFMS04
                 currT = theList[i];
                 if (currT.GetType().Name.Equals(paramClass))
                 {
-                    if (currT.GetType().Name.Equals(aT.GetType().Name))
+                    if (currT.Equals(aT))
                     {
                         theList[i] = aT;
                         return true; // success
@@ -135,14 +135,13 @@ namespace CSC240_WCFMS04
         {
             string paramClass = aT.GetType().Name;
             T currT;
-            T lastItem;
 
             for (int i = 0; i < theList.Count; i++)
             {
                 currT = theList[i];
                 if (currT.GetType().Name.Equals(paramClass))
                 {
-                    if (currT.GetType().Name.Equals(aT.GetType().Name))
+                    if (currT.Equals(aT))
                     {
 
                         theList.RemoveAt(i);
